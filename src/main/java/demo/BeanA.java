@@ -23,12 +23,14 @@ public class BeanA {
         this.beanB = beanB;
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = false)
     public void doSomething() {
 
         LOGGER.error("doSomething");
 
         List<MyEntity> entities = repository.findAll();
+
+        entities.stream().forEach(e -> e.setCounter(e.getCounter() + 1));
 
         entities.stream().filter(MyEntity::methodUsingLazyLoading)
                 .forEach(entity -> beanB.doSomethingMore(entity));
