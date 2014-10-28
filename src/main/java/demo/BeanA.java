@@ -3,8 +3,8 @@ package demo;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.slf4j.LoggerFactory.getLogger;
@@ -23,7 +23,7 @@ public class BeanA {
         this.beanB = beanB;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public void doSomething() {
 
         LOGGER.error("doSomething");
