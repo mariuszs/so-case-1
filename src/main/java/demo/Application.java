@@ -32,9 +32,6 @@ public class Application implements CommandLineRunner{
 
         // save a couple of customers
         repository.save(new MyEntity());
-        repository.save(new MyEntity());
-        repository.save(new MyEntity());
-        repository.save(new MyEntity());
 
         repository.flush();
 
